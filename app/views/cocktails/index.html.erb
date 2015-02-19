@@ -3,13 +3,23 @@
 
 <h1>All our cocktails</h1>
 
-<% @cocktails.each do |cocktail| %>
-  <ul>
-    <%= link_to cocktail_path(cocktail) do %>
-      <li><%= cocktail.name %></li>
-    <% end %>
-  </ul>
-<% end %>
+<ul>
+<% if @cocktails
+  @cocktails.each do |cocktail| %>
+  <%= link_to cocktail_path(cocktail) do %>
+    <li><%= cocktail.name %></li>
+  <% end %>
+<% end
+  end %>
+</ul>
 
-<%= link_to 'New Cocktail', new_cocktail_path %>
+
+<h4>Add new cocktail</h4>
+
+<%= simple_form_for(@cocktail) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :name %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>
 

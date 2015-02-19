@@ -1,22 +1,24 @@
 class DosesController < ApplicationController
-  before_action :find_cocktail, only: [ :new, :create ]
+  before_action :find_cocktail, only: [ :create ]
 
-  def new
-    @dose = Dose.new
-  end
+  # def new
+  #   @dose = Dose.new
+  # end
 
   def create
-    p params
     @dose = @cocktail.doses.build(dose_params)
 
     if @dose.save
       redirect_to cocktail_path(@cocktail), notice: 'Ingredient was successfully added.'
     else
-      render :new
+      render "cocktails/show"
     end
   end
 
   def destroy
+    @dose = Dose.find(params[:id])
+    @dose.destroy
+    redirect_to cocktail_path(params[:cocktail_id])
   end
 
   private

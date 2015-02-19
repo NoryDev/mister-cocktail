@@ -6,9 +6,18 @@
 
 <ul>
   <% @cocktail.doses.each do |dose| %>
-    <li><%= dose.description %> of <%= dose.ingredient.name %></li>
+    <% next unless dose.id %>
+    <li><%= dose.description %> of <%= dose.ingredient.name %> <%= link_to 'Delete', cocktail_dose_path(@cocktail, dose), method: :delete, data: { confirm: "Are you sure?" } %></li>
   <% end %>
 </ul>
 
-<%= link_to 'Back', cocktails_path %> |
-<%= link_to 'Add Ingredient', new_cocktail_dose_path(@cocktail) %>
+<h4>Add an ingredient to <%= @cocktail.name %></h4>
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :description %>
+  <%= f.association :ingredient %>
+  <%= f.submit "Add an Ingredient", class: "btn btn-primary"  %>
+<% end %>
+
+<%= link_to 'Back', cocktails_path %>

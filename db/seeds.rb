@@ -15,7 +15,10 @@ ingredients << Ingredient.create(name: "lemon")
 ingredients << Ingredient.create(name: "ice")
 ingredients << Ingredient.create(name: "mint leaves")
 ingredients << Ingredient.create(name: "rhum")
+ingredients << Ingredient.create(name: "tequila")
+ingredients << Ingredient.create(name: "orange")
 ingredients << Ingredient.create(name: "strawberry")
+ingredients << Ingredient.create(name: "sugar")
 
 cocktails = []
 cocktails << Cocktail.create(name: "Martini")

@@ -1,22 +1,26 @@
 class CocktailsController < ApplicationController
+
   def index
+    @cocktail = Cocktail.new
     @cocktails = Cocktail.all
   end
 
   def show
+    @dose = Dose.new
     @cocktail = Cocktail.find(params[:id])
   end
 
-  def new
-    @cocktail = Cocktail.new
-  end
+  # def new
+  #   @cocktail = Cocktail.new
+  # end
 
   def create
     @cocktail = Cocktail.new(cocktail_params)
     if @cocktail.save
       redirect_to @cocktail, notice: 'Cocktail was successfully created.'
     else
-      render :new
+      @cocktails = Cocktail.all
+      render :index
     end
   end
 

@@ -18,11 +18,23 @@ a:focus, a:hover {
   text-decoration: none;
 }
 
-ul {
-  list-style-type: none;
+.thumb-titled {
+  margin: 10px;
+  padding: 10px;
+  background: #efefef;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.legend {
+  width: 100px;
 }
 
 .padded {
   margin-top: 3em;
   margin-bottom: 3em;
+}
+
+ul.no-bullet {
+  list-style-type: none;
+  margin-left: -30px;
 }

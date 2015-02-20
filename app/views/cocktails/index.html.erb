@@ -4,12 +4,17 @@
 <div class="padded">
   <h1>All our cocktails</h1>
 
-  <ul>
+  <ul class="list-inline text-center">
   <% if @cocktails
-    @cocktails.each do |cocktail| %>
-    <%= link_to cocktail_path(cocktail) do %>
-      <li><i class="fa fa-glass"></i> <%= cocktail.name %></li>
-    <% end %>
+    @cocktails.reverse.each do |cocktail| %>
+    <li>
+      <%= link_to cocktail_path(cocktail) do %>
+        <div class="thumb-titled">
+          <%= image_tag cocktail.picture.url(:thumb) %>
+          <p class="text-center legend"><%= cocktail.name %></p>
+        </div>
+      <% end %>
+    </li>
   <% end
     end %>
   </ul>
@@ -23,6 +28,7 @@
     <%= f.error_notification %>
 
     <%= f.input :name %>
+    <%= f.input :picture, as: :file %>
     <%= f.submit class: "btn btn-primary" %>
   <% end %>
 </div>

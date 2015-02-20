@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+a:focus, a:hover {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.padded {
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
